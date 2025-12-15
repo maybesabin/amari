@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${nunito.variable} antialiased`}
       >
         <div className="w-full flex items-center justify-center">
-          <div className="xl:w-7xl xl:px-0 px-6 py-6">
+          <div className="xl:w-7xl px-6 py-6">
             <Navbar />
             {children}
           </div>
