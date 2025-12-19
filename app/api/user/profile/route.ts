@@ -2,23 +2,18 @@ import User from "@/app/models/User";
 import connectToDb from "@/app/utils/db"
 import { handleError } from "@/app/utils/handleError"
 import { errorResponse } from "@/app/utils/response";
-import jwt from "jsonwebtoken";
+import getToken from "@/app/utils/token";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request) => {
     try {
         await connectToDb()
 
-        const authHeader = req.headers.get("authorization");
-        const token = authHeader?.split(" ")[1];
+        const id = getToken(req)
 
-        if (!token) return errorResponse("Unauthorized user.")
+        const user = await User.findById(id).select("-password")
+        if (!user) return errorResponse("User not found.")
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {
-            id: string
-        }
-
-        const user = await User.findById(decoded.id).select("-password")
         return NextResponse.json(
             {
                 message: "User data fetched successfully.",
