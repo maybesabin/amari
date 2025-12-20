@@ -1,13 +1,13 @@
-import { BlogType } from "../types/Blog";
 import test from "../assets/test.jpg"
 import Image from "next/image";
+import { BlogType } from "../types/Blog";
 
-const Blog = () => {
+const Blog = ({ blog }: { blog: BlogType }) => {
     return (
         <div className="w-full">
             <Image
                 className="rounded-t-xl h-48 w-full object-cover"
-                src={test}
+                src={blog.featuredImage}
                 alt=""
             />
 

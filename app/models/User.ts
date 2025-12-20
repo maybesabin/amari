@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const UserModel = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -15,7 +15,6 @@ const UserModel = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
-
     },
     lastName: {
         type: String,
@@ -31,17 +30,12 @@ const UserModel = new mongoose.Schema({
     },
     profilePicture: {
         type: String,
-        required: true,
         default: "/assets/profile-picture.png"
     }
 }, {
     timestamps: true
 })
 
-if (mongoose.models.User) {
-    delete mongoose.models.User
-}
-
-const User = mongoose.model("User", UserModel);
+const User = mongoose.models.User || mongoose.model("User", UserSchema)
 
 export default User;
