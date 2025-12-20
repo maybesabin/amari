@@ -1,6 +1,10 @@
+import { User } from "./User";
+
 export type BlogType = {
     title: string;
-    description: string;
+    content: string;
     featuredImage: string;
     createdAt: string;
+    category: string;
+    author: User
 }

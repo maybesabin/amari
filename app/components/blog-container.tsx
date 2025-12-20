@@ -11,7 +11,6 @@ const BlogContainer = () => {
         const fetchBlogs = async () => {
             const res = await axios.get("/api/blogs")
             setBlogs(res.data.blogs)
-            console.log(res.data)
         }
         fetchBlogs()
     }, [])

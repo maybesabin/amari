@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Nunito, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
-import logo from "./assets/logo.png"
+import logo from "../public/assets/logo.png"
 
 const poppins = Poppins({
   variable: "--font-poppins",
